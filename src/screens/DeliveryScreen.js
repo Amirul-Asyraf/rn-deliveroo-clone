@@ -5,17 +5,23 @@ import {
 	TouchableOpacity,
 	Image,
 } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectRestaurant } from "../../features/restaurantSlice";
 import { XMarkIcon } from "react-native-heroicons/solid";
 import * as Progress from "react-native-progress";
 import MapView, { Marker } from "react-native-maps";
+import { resetBasket } from "../../features/basketSlice";
 
 const DeliveryScreen = () => {
 	const navigation = useNavigation();
+	const dispatch = useDispatch();
 	const restaurant = useSelector(selectRestaurant);
+
+	useEffect(() => {
+		dispatch(resetBasket());
+	}, [dispatch]);
 
 	return (
 		<View className="bg-[#00CCBB] flex-1">
