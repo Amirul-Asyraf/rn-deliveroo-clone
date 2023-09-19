@@ -10,7 +10,7 @@ export default defineConfig({
   name: 'default',
   title: 'rn-deliveroo-clone',
 
-  projectId: 'b6uhkr4h',
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID,
   dataset: 'production',
 
   plugins: [deskTool(), visionTool(), ...(isDev ? devOnlyPlugins : [])],
@@ -19,4 +19,3 @@ export default defineConfig({
     types: schemaTypes,
   },
 })
-
